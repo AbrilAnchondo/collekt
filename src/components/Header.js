@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
@@ -11,8 +11,19 @@ import TextsmsRoundedIcon from '@material-ui/icons/TextsmsRounded';
 import styles from '../styles/HeaderStyles';
 
 function Header(props) {
-  console.log('props', props);
-  const { classes } = props;
+  const [ input, setInput ] = useState('');
+  //console.log('props header', props)
+  const { classes, onSearchSubmit } = props;
+  const handleChange = (e) => {
+    //console.log(e.target.value);
+    setInput(e.target.value);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //console.log('submit');
+    onSearchSubmit(input);
+    setInput('');
+  }
   return (
     <div className={classes.root}>
       <IconButton>
@@ -24,16 +35,20 @@ function Header(props) {
       <IconButton>
         <a className={classes.link} href='/'>Today</a>
       </IconButton>
-      <div className={classes.search}>
+      <form className={classes.search} onSubmit={handleSubmit}>
         <div className={classes.searchIcon}>
           <SearchIcon />
         </div>
-        <InputBase  placeholder='Search' classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
+        <InputBase  
+          placeholder='Search' 
+          classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput
           }}
+          value={input}
+          onChange={handleChange}
         />
-      </div>
+      </form>
       <div className={classes.iconsWrapper}>
         <IconButton>
           <NotificationsIcon />
