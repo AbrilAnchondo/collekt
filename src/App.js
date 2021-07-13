@@ -1,58 +1,72 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Mainboard from './components/Mainboard';
+import MyPins from './components/MyPins'
 import unsplash from './api/unsplash.js';
 
 function App() {
   const [pins, setPins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [photosPerPage, setPhotosPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState('cats');
 
+  const fetchPins = async () => {
+    return await unsplash.get('/search/photos', {
+      params: {
+        query: searchTerm,
+        page: currentPage
+      }
+    });
+  }
+
   useEffect(() => {
-    const getPhotos = async (query) => {
-      console.log('fetching data...');
-      const res =  await unsplash.get('/search/photos', {
-        params: {
-          query: searchTerm,
-          per_page: photosPerPage,
-          page: currentPage
+    const newPinSearch = async () => {
+      const res = await fetchPins();
+      const items = res.data.results.map(item => {
+        return {
+          id: item.id,
+          alt_description: item.alt_description,
+          url: item.urls.small,
+          link: item.links.html,
         }
       })
-      console.log('response', res);
-      setPins(res.data.results);
+      //console.log('items', items);
+      setPins(items);
     }
-      getPhotos();
-    }, [currentPage, photosPerPage, searchTerm]);
+      newPinSearch();
+    },[searchTerm]);
 
-  // const getPhotos = async (query) => {
-  //   console.log('fetching data...');
-  //   const res =  await unsplash.get('/search/photos', {
-  //     params: {
-  //       query,
-  //       per_page: photosPerPage,
-  //       page: currentPage
-  //     }
-  //   })
-  //   console.log('response', res);
-  //   return res.data.results;
-  // }
+  useEffect(() => {
+    const loadMorePins = async () => {
+      const res = await fetchPins();
+      const newItems = res.data.results.map(item => {
+        return {
+          id: item.id,
+          alt_description: item.alt_description,
+          url: item.urls.small,
+          link: item.links.html,
+        }
+      })
+      //console.log('newItems',newItems);
+      setPins([...pins, ...newItems]);
+      //setPins(prev => [...prev, ...res.data.results])
+    }
+    loadMorePins();
+  },[currentPage])
 
   const onSubmit = async (term) => {
-    //const results = await getPhotos(term);
     setSearchTerm(term);
   }
 
-  const loadMore = async (searchTerm) => {
-    console.log('load more...');
+  const loadMore = async () => {
     setCurrentPage(currentPage + 1);
   }
 
   return (
-    <div className="App">
+    <div className="App" >
       <Header onSearchSubmit={onSubmit}/>
-      <Mainboard pins={pins}/>
-      <button onClick={loadMore}>Load More</button>
+      <Mainboard pins={pins} onScrollToBottom={loadMore}/>
+      {/* <MyPins /> */}
     </div>
   );
 }

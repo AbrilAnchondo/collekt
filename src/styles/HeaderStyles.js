@@ -24,12 +24,15 @@ const styles = theme => ({
   },
   link: {
     textDecoration: 'none',
-    backgroundColor: 'black',
-    color: 'white',
+    color: 'black',
     padding: '.9rem 1rem',
     fontSize: '1rem',
     borderRadius: '48px',
     fontWeight: 'bolder',
+    '&:hover': {
+      backgroundColor: 'black',
+      color: 'white'
+    }
   },
   search: {
     display: 'flex',

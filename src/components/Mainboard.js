@@ -1,20 +1,42 @@
 import React from 'react';
+import Masonry from 'react-masonry-css';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../styles/MainboardStyles';
 import Pin from './Pin';
 
 function Mainboard (props) {
-  //console.log('mainboard props', props);
-  const { classes, pins } = props;
-  // console.log('pinprop', pins);
+  const { classes, pins, onScrollToBottom } = props;
 
-  const pinCollection = pins.map(pin => (
-    <Pin key={pin.id} pin={pin} />
+  const pinCollection = pins.map((pin,i) => (
+    <div>
+      <Pin key={i} pin={pin} />
+    </div>
   ))
+
+  const breakpoints = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    520: 1
+  };
+
+  const handleScroll = e => {
+    const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
+    if (scrollHeight - scrollTop === clientHeight) {
+      onScrollToBottom();
+    }
+  }
+
   return (
     <div className={classes.wrapper}>
-      <div className={classes.container}>
-        {pinCollection}
+      <div className={classes.container} onScroll={handleScroll}>
+        <Masonry
+          breakpointCols={breakpoints}
+          className={classes.myMansonryGrid}
+          columnClassName={classes.myMansonryGridColumn}
+        >
+          {pinCollection}
+        </Masonry>
       </div>
     </div>
   )

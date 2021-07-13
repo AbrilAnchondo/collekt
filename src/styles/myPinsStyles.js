@@ -1,17 +1,17 @@
-
 const styles = {
   wrapper: {
     display: 'flex',
     width: '100%',
-    //minHeight: '100vh',
-    height: 'calc(100vh - 100px)',
+    minHeight: '100vh',
+    //height: 'calc(100vh - 100px)',
     justifyContent: 'center',
     backgroundColor: 'white',
   },
   container: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flexWrap: 'wrap',
     width: '96%',
     height: '100%',
