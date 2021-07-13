@@ -7,7 +7,7 @@ import styles from '../styles/myPinsStyles';
 
 function MyPins (props) {
   const [myPins, setMyPins] = useState([]);
-  console.log('myPins props', props);
+  //console.log('myPins props', props);
   const { classes } = props;
 
   const fetchSavedPins = async () => {

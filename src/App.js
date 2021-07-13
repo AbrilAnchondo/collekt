@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import Mainboard from './components/Mainboard';
+import Home from './components/Home';
 import MyPins from './components/MyPins'
+import Header from './components/Header';
 import unsplash from './api/unsplash.js';
 
 function App() {
@@ -30,7 +30,6 @@ function App() {
           link: item.links.html,
         }
       })
-      //console.log('items', items);
       setPins(items);
     }
       newPinSearch();
@@ -63,12 +62,25 @@ function App() {
   }
 
   return (
-    <div className="App" >
+    <div>
       <Header onSearchSubmit={onSubmit}/>
-      <Mainboard pins={pins} onScrollToBottom={loadMore}/>
-      {/* <MyPins /> */}
+      <Switch>
+        <Route 
+          exact
+          path='/'
+          render={(routerProps) => <Home 
+            {...routerProps} 
+            loadMore={loadMore}
+            pins={pins}
+          />}
+        />
+        <Route 
+          exact
+          path='/collekt'
+          render={(routerProps) => <MyPins {...routerProps} />}
+        />
+      </Switch>
     </div>
   );
 }
-
 export default App;

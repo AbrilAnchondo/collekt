@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
@@ -30,10 +31,10 @@ function Header(props) {
         <PinterestIcon className={classes.pinterest}/>
       </IconButton>
       <IconButton>
-        <a className={classes.link} href='/'>Home</a>
+        <Link className={classes.link} to='/'>Home</Link>
       </IconButton>
       <IconButton>
-        <a className={classes.link} href='/'>Today</a>
+        <Link classsName={classes.link} to='/'>Today</Link>
       </IconButton>
       <form className={classes.search} onSubmit={handleSubmit}>
         <div className={classes.searchIcon}>
@@ -57,7 +58,9 @@ function Header(props) {
           <TextsmsRoundedIcon />
         </IconButton>
         <IconButton>
-          <AccountCircleIcon />
+          <Link to='/collekt'>
+            <AccountCircleIcon />
+          </Link>
         </IconButton>
       </div>
     </div>

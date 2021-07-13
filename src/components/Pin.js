@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
   const { classes, pin } = props;
-  console.log(pin);
+  //console.log(pin);
 
   const addToPins = async () => {
     return await jsonserver.post('/pins', {
@@ -22,7 +22,7 @@ function Pin(props) {
     e.preventDefault();
     console.log('saving pin...');
     const res = await addToPins();
-    console.log('res add pin', res);
+    //console.log('res add pin', res);
   }
 
   const showPinModal = () => {
