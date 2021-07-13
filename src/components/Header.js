@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
@@ -31,10 +31,10 @@ function Header(props) {
         <PinterestIcon className={classes.pinterest}/>
       </IconButton>
       <IconButton>
-        <Link className={classes.link} to='/'>Home</Link>
+        <NavLink className={classes.link} exact to='/' activeStyle={{backgroundColor: 'black', color: 'white'}}>Home</NavLink>
       </IconButton>
       <IconButton>
-        <Link classsName={classes.link} to='/'>Today</Link>
+        <NavLink className={classes.link} exact to='/' activeStyle={{backgroundColor: 'black', color: 'white'}}>Today</NavLink>
       </IconButton>
       <form className={classes.search} onSubmit={handleSubmit}>
         <div className={classes.searchIcon}>
@@ -58,9 +58,9 @@ function Header(props) {
           <TextsmsRoundedIcon />
         </IconButton>
         <IconButton>
-          <Link to='/collekt'>
+          <NavLink exact to='/collekt' activeStyle={{color: 'red'}}>
             <AccountCircleIcon />
-          </Link>
+          </NavLink>
         </IconButton>
       </div>
     </div>
