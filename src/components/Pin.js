@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
+//import { Link } from 'react-router-dom';
 import jsonserver from '../api/jsonserver.js';
 import styles from '../styles/PinStyles';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -22,7 +23,7 @@ function Pin(props) {
     e.preventDefault();
     console.log('saving pin...');
     const res = await addToPins();
-    //console.log('res add pin', res);
+    console.log('res add pin', res);
   }
 
   const showPinModal = () => {
@@ -33,7 +34,9 @@ function Pin(props) {
     <div className={classes.root}>
       <div className={classes.pinContainer}>
         <img className={classes.image} src={pin.url} alt={pin.alt_description} onClick={showPinModal}/>
-        <div className={classes.download}><GetAppIcon /></div>
+        <a href={pin.link}> 
+          <p className={classes.download}><GetAppIcon /></p>
+        </a>
         <div className={classes.save} onClick={savePin}>
           <IconButton>
             <a className={classes.link} href='/'>Save</a>

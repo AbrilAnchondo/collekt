@@ -13,6 +13,9 @@ const styles = {
       opacity: props => (
         props.hideSaveButton ? '0' : '1'
       ),
+    },
+    '&:hover p': {
+      opacity: '1'
     }
   },
   image: {
@@ -35,6 +38,7 @@ const styles = {
     fontWeight: 'bolder',
   },
   download: {
+    color: 'black',
     position: 'absolute',
     bottom: '8px',
     left: '14px',

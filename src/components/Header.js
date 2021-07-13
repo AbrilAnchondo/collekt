@@ -8,7 +8,6 @@ import PinterestIcon from '@material-ui/icons/Pinterest';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import TextsmsRoundedIcon from '@material-ui/icons/TextsmsRounded';
-
 import styles from '../styles/HeaderStyles';
 
 function Header(props) {
@@ -58,8 +57,12 @@ function Header(props) {
           <TextsmsRoundedIcon />
         </IconButton>
         <IconButton>
-          <NavLink exact to='/collekt' activeStyle={{color: 'red'}}>
-            <AccountCircleIcon />
+          <NavLink 
+            exact to='/collekt' 
+            className={classes.userLink}
+            activeStyle={{color: 'black'}}
+          >
+            <AccountCircleIcon className={classes.user}/>
           </NavLink>
         </IconButton>
       </div>

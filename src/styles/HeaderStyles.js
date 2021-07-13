@@ -34,6 +34,12 @@ const styles = theme => ({
       color: 'white'
     }
   },
+  userLink: {
+    color: 'grey',
+    '&:hover': {
+      color: 'black'
+    }
+  },
   search: {
     display: 'flex',
     alignItems: 'center',

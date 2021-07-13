@@ -8,8 +8,6 @@ import styles from '../styles/myPinsStyles';
 function MyPins (props) {
   const hideSaveButton = true;
   const [myPins, setMyPins] = useState([]);
-  //const [hideSaveButton, setHideSaveButton] = useState(true);
-  //console.log('myPins props', props);
   const { classes } = props;
 
   const fetchSavedPins = async () => {
