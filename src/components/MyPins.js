@@ -7,6 +7,7 @@ import styles from '../styles/myPinsStyles';
 
 function MyPins (props) {
   const [myPins, setMyPins] = useState([]);
+  const [hideSaveButton, setHideSaveButton] = useState(true);
   //console.log('myPins props', props);
   const { classes } = props;
 
@@ -28,7 +29,7 @@ function MyPins (props) {
 
   const myPinCollection = myPins.map(pin => (
     <div>
-      <Pin key={pin.id} pin={pin}/>
+      <Pin key={pin.id} pin={pin} hideSaveButton={hideSaveButton}/>
     </div>
   ));
 

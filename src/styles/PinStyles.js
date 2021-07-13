@@ -1,4 +1,4 @@
-const SHOW_SAVE_BUTTON = false;
+//const SHOW_SAVE_BUTTON = true;
 const styles = {
   root: {
     //display: 'flex',
@@ -11,7 +11,9 @@ const styles = {
     boxSizing: 'border-box',
     position: 'relative',
     '&:hover div': {
-      opacity: SHOW_SAVE_BUTTON ? '1' : '0',
+      opacity: props => (
+        props.hideSaveButton ? '0' : '1'
+      ),
     }
   },
   image: {
