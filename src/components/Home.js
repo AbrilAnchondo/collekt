@@ -1,14 +1,15 @@
 import React from 'react';
 import Mainboard from './Mainboard';
-import MyPins from './MyPins';
 
 function Home(props) {
-  const { loadMore, pins } = props;
+  const { loadMore, pins, updateSavedPins } = props;
 
   return (
     <div>
-      <Mainboard pins={pins} onScrollToBottom={loadMore} />
-      <MyPins />
+      <Mainboard 
+        pins={pins} 
+        onScrollToBottom={loadMore} 
+        updateSavedPins={updateSavedPins}/>
     </div>
   );
 }

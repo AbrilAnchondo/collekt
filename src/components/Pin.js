@@ -1,27 +1,23 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import jsonserver from '../api/jsonserver.js';
 import styles from '../styles/PinStyles';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
-  const { classes, pin } = props;
+  const { classes, pin, updateSavedPins } = props;
 
-  const addToPins = async () => {
-    return await jsonserver.post('/pins', {
+  const savePin = async (e) => {
+    e.preventDefault();
+    const res = await jsonserver.post('/pins', {
       id: pin.id,
       alt_description: pin.alt_description,
       url: pin.url,
       link: pin.link
-    });
-  }
-
-  const savePin = async (e) => {
-    e.preventDefault();
-    const res = await addToPins();
+    })
     console.log('saved Pin', res.data);
+    updateSavedPins(pin);
   }
 
   const showPinModal = () => {

@@ -5,11 +5,15 @@ import styles from '../styles/MainboardStyles';
 import Pin from './Pin';
 
 function Mainboard (props) {
-  const { classes, pins, onScrollToBottom } = props;
+  const { classes, pins, onScrollToBottom, updateSavedPins} = props;
 
   const pinCollection = pins.map((pin,i) => (
     <div>
-      <Pin key={i} pin={pin} />
+      <Pin 
+        key={i} 
+        pin={pin} 
+        updateSavedPins={updateSavedPins}
+        />
     </div>
   ))
 

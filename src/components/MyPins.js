@@ -13,7 +13,10 @@ function MyPins (props) {
 
   const myPinCollection = savedPins?.map(pin => (
     <div>
-      <Pin key={pin.id} pin={pin} hideSaveButton={hideSaveButton} />
+      <Pin 
+        key={pin.id} pin={pin} 
+        hideSaveButton={hideSaveButton} 
+        />
     </div>
   ));
 

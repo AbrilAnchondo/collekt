@@ -73,15 +73,11 @@ function App() {
     setCurrentPage(currentPage + 1);
   }
 
-  // const savePin = (pin) => {
-  //   // const res = await jsonserver.post('/pins', {
-  //   //   id: pin.id,
-  //   //   alt_description: pin.alt_description,
-  //   //   url: pin.url,
-  //   //   link: pin.link
-  //   // });
-  //   console.log('saved Pin');
-  // }
+  const updateSavedPins = (pin) => {
+    console.log('pin to update!!!', pin);
+    setSavedPins([...savedPins, pin]);
+  }
+
 
   return (
     <div>
@@ -94,6 +90,7 @@ function App() {
             {...routerProps} 
             loadMore={loadMore}
             pins={pins}
+            updateSavedPins={updateSavedPins}
           />}
         />
         <Route 
