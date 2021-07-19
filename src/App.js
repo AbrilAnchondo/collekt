@@ -4,12 +4,17 @@ import Home from './components/Home';
 import MyPins from './components/MyPins'
 import Header from './components/Header';
 import unsplash from './api/unsplash.js';
+import jsonserver from './api/jsonserver.js';
 
 function App() {
   const [pins, setPins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('cats');
+  const [savedPins, setSavedPins] = useState([]);
 
+  const savedPinsById = new Map();
+  savedPins.map(pin => savedPinsById.set(pin.id, pin));
+ 
   const fetchPins = async () => {
     return await unsplash.get('/search/photos', {
       params: {
@@ -46,12 +51,19 @@ function App() {
           link: item.links.html,
         }
       })
-      //console.log('newItems',newItems);
-      setPins([...pins, ...newItems]);
-      //setPins(prev => [...prev, ...res.data.results])
+      //setPins([...pins, ...newItems]);
+      setPins(prev => [...prev, ...newItems])
     }
     loadMorePins();
   },[currentPage])
+
+  useEffect(() => {
+    const getSavedPins = async () => {
+      const res = await jsonserver.get('/pins');
+      setSavedPins(res.data);
+    }
+    getSavedPins();
+  }, []);
 
   const onSubmit = async (term) => {
     setSearchTerm(term);
@@ -60,6 +72,16 @@ function App() {
   const loadMore = async () => {
     setCurrentPage(currentPage + 1);
   }
+
+  // const savePin = (pin) => {
+  //   // const res = await jsonserver.post('/pins', {
+  //   //   id: pin.id,
+  //   //   alt_description: pin.alt_description,
+  //   //   url: pin.url,
+  //   //   link: pin.link
+  //   // });
+  //   console.log('saved Pin');
+  // }
 
   return (
     <div>
@@ -77,7 +99,7 @@ function App() {
         <Route 
           exact
           path='/collekt'
-          render={(routerProps) => <MyPins {...routerProps} />}
+          render={(routerProps) => <MyPins {...routerProps} savedPins={savedPins} />}
         />
       </Switch>
     </div>

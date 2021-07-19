@@ -7,7 +7,7 @@ function Home(props) {
 
   return (
     <div>
-      <Mainboard pins={pins} onScrollToBottom={loadMore}/>
+      <Mainboard pins={pins} onScrollToBottom={loadMore} />
       <MyPins />
     </div>
   );

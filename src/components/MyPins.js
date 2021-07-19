@@ -1,34 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Pin from './Pin';
-import jsonserver from '../api/jsonserver.js';
 import { withStyles } from '@material-ui/core/styles';
 import Masonry from 'react-masonry-css';
 import styles from '../styles/myPinsStyles';
 
 function MyPins (props) {
   const hideSaveButton = true;
-  const [myPins, setMyPins] = useState([]);
-  const { classes } = props;
+  const { classes, savedPins } = props;
 
-  const fetchSavedPins = async () => {
-    return await jsonserver.get('/pins');
-  }
-
-  useEffect(() => {
-    const savedPins = async () => {
-      const res = await fetchSavedPins();
-      //console.log('my pins res',res);
-      setMyPins(res.data);
-    }
-    savedPins();
-  }, [])
-
-  // const categories = myPins.map(pin => pin.category);
+  // const categories = savedPins.map(pin => pin.category);
   // const boards = new Set(categories);
 
-  const myPinCollection = myPins.map(pin => (
+  const myPinCollection = savedPins?.map(pin => (
     <div>
-      <Pin key={pin.id} pin={pin} hideSaveButton={hideSaveButton}/>
+      <Pin key={pin.id} pin={pin} hideSaveButton={hideSaveButton} />
     </div>
   ));
 

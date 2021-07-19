@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import jsonserver from '../api/jsonserver.js';
 import styles from '../styles/PinStyles';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
   const { classes, pin } = props;
-  //console.log(pin);
 
   const addToPins = async () => {
     return await jsonserver.post('/pins', {
@@ -21,9 +20,8 @@ function Pin(props) {
 
   const savePin = async (e) => {
     e.preventDefault();
-    console.log('saving pin...');
     const res = await addToPins();
-    console.log('res add pin', res);
+    console.log('saved Pin', res.data);
   }
 
   const showPinModal = () => {

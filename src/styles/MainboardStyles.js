@@ -21,8 +21,8 @@ const styles = {
     overflow: 'auto'
   },
   myMansonryGrid: {
-    display: '-webkit-box', 
-    display: '-ms-flexbox', 
+    //display: '-webkit-box', 
+    //display: '-ms-flexbox', 
     display: 'flex',
     marginLeft: '-30px',
     width: 'auto',
