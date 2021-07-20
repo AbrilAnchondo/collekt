@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import MyPins from './components/MyPins'
 import Header from './components/Header';
+import PinDetail from './components/PinDetail';
 import unsplash from './api/unsplash.js';
 import jsonserver from './api/jsonserver.js';
 
@@ -96,6 +97,11 @@ function App() {
           exact
           path='/collekt'
           render={(routerProps) => <MyPins {...routerProps} savedPins={savedPins} savedPinsById={savedPinsById}/>}
+        />
+        <Route 
+          exact
+          path='/pin/:id'
+          render={(routerProps) => <PinDetail />}
         />
       </Switch>
     </div>
