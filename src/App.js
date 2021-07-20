@@ -14,7 +14,6 @@ function App() {
 
   const savedPinsById = {};
   savedPins.map(pin => savedPinsById[pin.id] = pin);
-  console.log(savedPinsById);
   
   const fetchPins = async () => {
     return await unsplash.get('/search/photos', {
@@ -96,7 +95,7 @@ function App() {
         <Route 
           exact
           path='/collekt'
-          render={(routerProps) => <MyPins {...routerProps} savedPins={savedPins} />}
+          render={(routerProps) => <MyPins {...routerProps} savedPins={savedPins} savedPinsById={savedPinsById}/>}
         />
       </Switch>
     </div>

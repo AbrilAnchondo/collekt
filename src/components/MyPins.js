@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-css';
 import styles from '../styles/myPinsStyles';
 
 function MyPins (props) {
-  const { classes, savedPins } = props;
+  const { classes, savedPins, savedPinsById } = props;
 
   // const categories = savedPins.map(pin => pin.category);
   // const boards = new Set(categories);
@@ -13,7 +13,7 @@ function MyPins (props) {
   const myPinCollection = savedPins?.map(pin => (
     <div>
       <Pin 
-        key={pin.id} pin={pin}  
+        key={pin.id} pin={pin}  savedPinsById={savedPinsById}
         />
     </div>
   ));

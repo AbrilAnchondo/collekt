@@ -13,7 +13,7 @@ const styles = {
       opacity: 1
     },
     '&:hover p': {
-      opacity: '1'
+      opacity: 1
     }
   },
   image: {
@@ -48,7 +48,6 @@ const styles = {
     top: '14px',
     right: '8px',
     cursor: 'pointer',
-    border: '1px solid blue',
     opacity: '0',
   }
 }
