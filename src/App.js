@@ -12,9 +12,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('cats');
   const [savedPins, setSavedPins] = useState([]);
 
-  const savedPinsById = new Map();
-  savedPins.map(pin => savedPinsById.set(pin.id, pin));
- 
+  const savedPinsById = {};
+  savedPins.map(pin => savedPinsById[pin.id] = pin);
+  console.log(savedPinsById);
+  
   const fetchPins = async () => {
     return await unsplash.get('/search/photos', {
       params: {
@@ -23,7 +24,7 @@ function App() {
       }
     });
   }
-
+  
   useEffect(() => {
     const newPinSearch = async () => {
       const res = await fetchPins();
@@ -37,9 +38,9 @@ function App() {
       })
       setPins(items);
     }
-      newPinSearch();
-    },[searchTerm]);
-
+    newPinSearch();
+  },[searchTerm]);
+  
   useEffect(() => {
     const loadMorePins = async () => {
       const res = await fetchPins();
@@ -56,7 +57,7 @@ function App() {
     }
     loadMorePins();
   },[currentPage])
-
+  
   useEffect(() => {
     const getSavedPins = async () => {
       const res = await jsonserver.get('/pins');
@@ -64,20 +65,18 @@ function App() {
     }
     getSavedPins();
   }, []);
-
+  
   const onSubmit = async (term) => {
     setSearchTerm(term);
   }
-
+  
   const loadMore = async () => {
     setCurrentPage(currentPage + 1);
   }
-
+  
   const updateSavedPins = (pin) => {
-    console.log('pin to update!!!', pin);
     setSavedPins([...savedPins, pin]);
   }
-
 
   return (
     <div>
@@ -91,6 +90,7 @@ function App() {
             loadMore={loadMore}
             pins={pins}
             updateSavedPins={updateSavedPins}
+            savedPinsById={savedPinsById}
           />}
         />
         <Route 

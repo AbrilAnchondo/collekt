@@ -6,7 +6,10 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
-  const { classes, pin, updateSavedPins } = props;
+  const { classes, pin, updateSavedPins, savedPinsById } = props;
+  console.log(pin);
+  console.log(savedPinsById);
+  console.log("Was this pin saved? "+(savedPinsById[pin.id] !== undefined));
 
   const savePin = async (e) => {
     e.preventDefault();
