@@ -10,9 +10,7 @@ const styles = {
     boxSizing: 'border-box',
     position: 'relative',
     '&:hover div': {
-      opacity: props => (
-        props.hideSaveButton ? '0' : '1'
-      ),
+      opacity: 1
     },
     '&:hover p': {
       opacity: '1'
@@ -50,6 +48,7 @@ const styles = {
     top: '14px',
     right: '8px',
     cursor: 'pointer',
+    border: '1px solid blue',
     opacity: '0',
   }
 }

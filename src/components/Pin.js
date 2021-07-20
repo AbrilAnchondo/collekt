@@ -7,9 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
   const { classes, pin, updateSavedPins, savedPinsById } = props;
-  console.log(pin);
-  console.log(savedPinsById);
-  console.log("Was this pin saved? "+(savedPinsById[pin.id] !== undefined));
 
   const savePin = async (e) => {
     e.preventDefault();
@@ -34,7 +31,10 @@ function Pin(props) {
         <a href={pin.link}> 
           <p className={classes.download}><GetAppIcon /></p>
         </a>
-        <div className={classes.save} onClick={savePin}>
+        <div className={classes.save} 
+          onClick={savePin}
+          style={{display: (savedPinsById[pin.id] !== undefined) ? 'none' : 'inline-block'}}
+          >
           <IconButton>
             <a className={classes.link} href='/'>Save</a>
           </IconButton>

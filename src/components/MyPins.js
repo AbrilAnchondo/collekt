@@ -5,7 +5,6 @@ import Masonry from 'react-masonry-css';
 import styles from '../styles/myPinsStyles';
 
 function MyPins (props) {
-  const hideSaveButton = true;
   const { classes, savedPins } = props;
 
   // const categories = savedPins.map(pin => pin.category);
@@ -14,8 +13,7 @@ function MyPins (props) {
   const myPinCollection = savedPins?.map(pin => (
     <div>
       <Pin 
-        key={pin.id} pin={pin} 
-        hideSaveButton={hideSaveButton} 
+        key={pin.id} pin={pin}  
         />
     </div>
   ));
