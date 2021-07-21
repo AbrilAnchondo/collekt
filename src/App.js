@@ -85,7 +85,7 @@ function App() {
   }
   
   const updateSavedPins = (pin) => {
-    setSavedPins([...savedPins, pin]);
+    setSavedPins([pin, ...savedPins]);
   }
 
   return (
