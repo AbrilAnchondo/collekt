@@ -15,7 +15,8 @@ function Pin(props) {
       id: pin.id,
       alt_description: pin.alt_description,
       url: pin.url,
-      link: pin.link
+      link: pin.link,
+
     })
     console.log('saved Pin', res.data);
     updateSavedPins(pin);
@@ -24,7 +25,12 @@ function Pin(props) {
   return (
     <div className={classes.root}>
       <div className={classes.pinContainer}>
-        <Link exact to={`/pin/${pin.id}`}>
+        <Link exact to={{
+          pathname: `/pin/${pin.id}`,
+          state: {
+            pin
+          }
+        }}>
           <img className={classes.image} src={pin.url} alt={pin.alt_description} />
         </Link>
         <a href={pin.link}> 

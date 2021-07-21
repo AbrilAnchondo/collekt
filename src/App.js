@@ -28,14 +28,20 @@ function App() {
   useEffect(() => {
     const newPinSearch = async () => {
       const res = await fetchPins();
+      console.log('res', res.data.results);
       const items = res.data.results.map(item => {
         return {
           id: item.id,
           alt_description: item.alt_description,
           url: item.urls.small,
           link: item.links.html,
+          tags: item.tags,
+          artist_location: item.user.location,
+          artist_name: item.user.name,
+          artist_portfolio: item.user.portfolio_url
         }
       })
+      console.log(items);
       setPins(items);
     }
     newPinSearch();
@@ -50,6 +56,10 @@ function App() {
           alt_description: item.alt_description,
           url: item.urls.small,
           link: item.links.html,
+          tags: item.tags,
+          artist_location: item.user.location,
+          artist_name: item.user.name,
+          artist_portfolio: item.user.portfolio_url
         }
       })
       //setPins([...pins, ...newItems]);
@@ -101,7 +111,7 @@ function App() {
         <Route 
           exact
           path='/pin/:id'
-          render={(routerProps) => <PinDetail />}
+          render={(routerProps) => <PinDetail {...routerProps} />}
         />
       </Switch>
     </div>
