@@ -32,9 +32,9 @@ function Header(props) {
       <IconButton>
         <NavLink className={classes.link} exact to='/' activeStyle={{backgroundColor: 'black', color: 'white'}}>Home</NavLink>
       </IconButton>
-      <IconButton>
+      {/* <IconButton>
         <NavLink className={classes.link} exact to='/' activeStyle={{backgroundColor: 'black', color: 'white'}}>Today</NavLink>
-      </IconButton>
+      </IconButton> */}
       <form className={classes.search} onSubmit={handleSubmit}>
         <div className={classes.searchIcon}>
           <SearchIcon />

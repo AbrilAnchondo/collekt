@@ -7,6 +7,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import IconButton from '@material-ui/core/IconButton';
 
 function Pin(props) {
+  console.log('Pin props', props);
   const { classes, pin, updateSavedPins, savedPinsById } = props;
 
   const savePin = async (e) => {
@@ -16,9 +17,10 @@ function Pin(props) {
       alt_description: pin.alt_description,
       url: pin.url,
       link: pin.link,
+      artist_name: pin.artist_name,
+      artist_portfolio: pin.artist_portfolio
 
     })
-    console.log('saved Pin', res.data);
     updateSavedPins(pin);
   }
 

@@ -28,7 +28,7 @@ function MyPins (props) {
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>
-        <h1>Your Pin Collection</h1>
+        <h1>My Collektion</h1>
         <Masonry
           breakpointCols={breakpoints}
           className={classes.myMansonryGrid}
