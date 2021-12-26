@@ -8,22 +8,20 @@ import Board from "./Board";
 
 function MyPins(props) {
   const { classes, savedPins, savedPinsById } = props;
-  console.log("saved boards/pins", savedPins);
+  console.log("saved pins", savedPins);
   console.log("saved pins by id", savedPinsById);
 
   // const categories = savedPins.map(pin => pin.category);
   // const boards = new Set(categories);
 
-  // //displaying all pins befor adding boards
-  // const myPinCollection = savedPins?.map(pin => (
-  //   <div>
-  //     <Pin
-  //       key={pin.id} pin={pin}  savedPinsById={savedPinsById}
-  //       />
-  //   </div>
-  // ));
+  //displaying all pins before adding boards
+  const myPinCollection = savedPins?.map((pin) => (
+    <div>
+      <Pin key={pin.id} pin={pin} savedPinsById={savedPinsById} />
+    </div>
+  ));
 
-  const displayBoards = savedPins.map((board) => <Board board={board} />);
+  //const displayBoards = savedPins.map((board) => <Board board={board} />);
 
   const breakpoints = {
     default: 4,
@@ -41,8 +39,8 @@ function MyPins(props) {
           className={classes.myMansonryGrid}
           columnClassName={classes.myMansonryGridColumn}
         >
-          {/* {myPinCollection} */}
-          {displayBoards}
+          {myPinCollection}
+          {/* {displayBoards} */}
         </Masonry>
       </div>
     </div>

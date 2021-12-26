@@ -71,9 +71,10 @@ function App() {
       // const res = await jsonserver.get('/pins');
       // console.log('saved pins', res.data);
       // setSavedPins(res.data);
-      const res = await jsonserver.get("/boards");
-      console.log("res boards", res.data);
+      const res = await jsonserver.get("/pins");
+      console.log("res pins", res.data);
       setSavedPins(res.data);
+      console.log("savedPins state app", savedPins);
     };
     getSavedPins();
   }, []);
@@ -90,7 +91,6 @@ function App() {
   const updateSavedPins = (pin) => {
     console.log("pin to save from app", pin);
     setSavedPins([pin, ...savedPins]);
-    console.log("savedPins state updated", savedPins);
   };
 
   return (
