@@ -1,28 +1,35 @@
-import React from 'react';
-import Pin from './Pin';
-import { withStyles } from '@material-ui/core/styles';
-import Masonry from 'react-masonry-css';
-import styles from '../styles/myPinsStyles';
+import React from "react";
+import Pin from "./Pin";
+import { withStyles } from "@material-ui/core/styles";
+import Masonry from "react-masonry-css";
+import styles from "../styles/myPinsStyles";
+import PinDetail from "./PinDetail";
+import Board from "./Board";
 
-function MyPins (props) {
+function MyPins(props) {
   const { classes, savedPins, savedPinsById } = props;
+  console.log("saved boards/pins", savedPins);
+  console.log("saved pins by id", savedPinsById);
 
   // const categories = savedPins.map(pin => pin.category);
   // const boards = new Set(categories);
 
-  const myPinCollection = savedPins?.map(pin => (
-    <div>
-      <Pin 
-        key={pin.id} pin={pin}  savedPinsById={savedPinsById}
-        />
-    </div>
-  ));
+  // //displaying all pins befor adding boards
+  // const myPinCollection = savedPins?.map(pin => (
+  //   <div>
+  //     <Pin
+  //       key={pin.id} pin={pin}  savedPinsById={savedPinsById}
+  //       />
+  //   </div>
+  // ));
+
+  const displayBoards = savedPins.map((board) => <Board board={board} />);
 
   const breakpoints = {
     default: 4,
     1100: 3,
     700: 2,
-    520: 1
+    520: 1,
   };
 
   return (
@@ -34,10 +41,11 @@ function MyPins (props) {
           className={classes.myMansonryGrid}
           columnClassName={classes.myMansonryGridColumn}
         >
-          {myPinCollection}
+          {/* {myPinCollection} */}
+          {displayBoards}
         </Masonry>
       </div>
     </div>
-  )
+  );
 }
 export default withStyles(styles)(MyPins);

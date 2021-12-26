@@ -1,36 +1,37 @@
-import React from 'react';
-import Masonry from 'react-masonry-css';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/MainboardStyles';
-import Pin from './Pin';
+import React from "react";
+import Masonry from "react-masonry-css";
+import { withStyles } from "@material-ui/core/styles";
+import styles from "../styles/MainboardStyles";
+import Pin from "./Pin";
 
-function Mainboard (props) {
-  const { classes, pins, onScrollToBottom, updateSavedPins, savedPinsById} = props;
+function Mainboard(props) {
+  const { classes, pins, onScrollToBottom, updateSavedPins, savedPinsById } =
+    props;
 
-  const pinCollection = pins.map((pin,i) => (
+  const pinCollection = pins.map((pin, i) => (
     <div>
-      <Pin 
-        key={i} 
-        pin={pin} 
+      <Pin
+        key={i}
+        pin={pin}
         updateSavedPins={updateSavedPins}
         savedPinsById={savedPinsById}
-        />
+      />
     </div>
-  ))
+  ));
 
   const breakpoints = {
     default: 4,
     1100: 3,
     700: 2,
-    520: 1
+    520: 1,
   };
 
-  const handleScroll = e => {
+  const handleScroll = (e) => {
     const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
     if (scrollHeight - scrollTop === clientHeight) {
       onScrollToBottom();
     }
-  }
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -44,6 +45,6 @@ function Mainboard (props) {
         </Masonry>
       </div>
     </div>
-  )
+  );
 }
 export default withStyles(styles)(Mainboard);
