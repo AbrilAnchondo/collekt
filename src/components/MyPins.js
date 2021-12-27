@@ -8,8 +8,6 @@ import Board from "./Board";
 
 function MyPins(props) {
   const { classes, savedPins, savedPinsById } = props;
-  console.log("saved pins", savedPins);
-  console.log("saved pins by id", savedPinsById);
 
   // const categories = savedPins.map(pin => pin.category);
   // const boards = new Set(categories);

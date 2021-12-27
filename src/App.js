@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
+import Boards from "./components/Boards";
 import MyPins from "./components/MyPins";
 import Header from "./components/Header";
 import PinDetail from "./components/PinDetail";
@@ -68,13 +69,9 @@ function App() {
 
   useEffect(() => {
     const getSavedPins = async () => {
-      // const res = await jsonserver.get('/pins');
-      // console.log('saved pins', res.data);
-      // setSavedPins(res.data);
       const res = await jsonserver.get("/pins");
       console.log("res pins", res.data);
       setSavedPins(res.data);
-      console.log("savedPins state app", savedPins);
     };
     getSavedPins();
   }, []);
@@ -106,6 +103,17 @@ function App() {
               loadMore={loadMore}
               pins={pins}
               updateSavedPins={updateSavedPins}
+              savedPinsById={savedPinsById}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/my-pins"
+          render={(routerProps) => (
+            <Boards
+              {...routerProps}
+              savedPins={savedPins}
               savedPinsById={savedPinsById}
             />
           )}

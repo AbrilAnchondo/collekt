@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import TextsmsRoundedIcon from "@material-ui/icons/TextsmsRounded";
+import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import styles from "../styles/HeaderStyles";
 
 function Header(props) {
@@ -62,7 +62,14 @@ function Header(props) {
           <NotificationsIcon />
         </IconButton>
         <IconButton>
-          <TextsmsRoundedIcon />
+          <NavLink
+            exact
+            to="/my-pins"
+            className={classes.userLink}
+            activeStyle={{ color: "black" }}
+          >
+            <PhotoLibraryIcon />
+          </NavLink>
         </IconButton>
         <IconButton>
           <NavLink
