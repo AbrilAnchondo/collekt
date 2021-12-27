@@ -3,14 +3,9 @@ import Pin from "./Pin";
 import { withStyles } from "@material-ui/core/styles";
 import Masonry from "react-masonry-css";
 import styles from "../styles/myPinsStyles";
-import PinDetail from "./PinDetail";
-import Board from "./Board";
 
 function MyPins(props) {
   const { classes, savedPins, savedPinsById } = props;
-
-  // const categories = savedPins.map(pin => pin.category);
-  // const boards = new Set(categories);
 
   //displaying all pins before adding boards
   const myPinCollection = savedPins?.map((pin) => (
@@ -18,8 +13,6 @@ function MyPins(props) {
       <Pin key={pin.id} pin={pin} savedPinsById={savedPinsById} />
     </div>
   ));
-
-  //const displayBoards = savedPins.map((board) => <Board board={board} />);
 
   const breakpoints = {
     default: 4,
@@ -38,7 +31,6 @@ function MyPins(props) {
           columnClassName={classes.myMansonryGridColumn}
         >
           {myPinCollection}
-          {/* {displayBoards} */}
         </Masonry>
       </div>
     </div>

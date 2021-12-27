@@ -70,7 +70,7 @@ function App() {
   useEffect(() => {
     const getSavedPins = async () => {
       const res = await jsonserver.get("/pins");
-      console.log("res pins", res.data);
+      //console.log("res pins", res.data);
       setSavedPins(res.data);
     };
     getSavedPins();
@@ -113,8 +113,8 @@ function App() {
           render={(routerProps) => (
             <Boards
               {...routerProps}
-              savedPins={savedPins}
-              savedPinsById={savedPinsById}
+              // savedPins={savedPins}
+              // savedPinsById={savedPinsById}
             />
           )}
         />
