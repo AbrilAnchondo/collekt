@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Boards from "./components/Boards";
+import Board from "./components/Board";
 import MyPins from "./components/MyPins";
 import Header from "./components/Header";
 import PinDetail from "./components/PinDetail";
@@ -128,6 +129,11 @@ function App() {
               // savedPinsById={savedPinsById}
             />
           )}
+        />
+        <Route
+          exact
+          path="/collektions/:id"
+          render={(routerProps) => <Board {...routerProps} />}
         />
         <Route
           exact
