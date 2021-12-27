@@ -111,21 +111,21 @@ function App() {
           exact
           path="/my-pins"
           render={(routerProps) => (
-            <Boards
+            <MyPins
               {...routerProps}
-              // savedPins={savedPins}
-              // savedPinsById={savedPinsById}
+              savedPins={savedPins}
+              savedPinsById={savedPinsById}
             />
           )}
         />
         <Route
           exact
-          path="/collekt"
+          path="/collektions"
           render={(routerProps) => (
-            <MyPins
+            <Boards
               {...routerProps}
-              savedPins={savedPins}
-              savedPinsById={savedPinsById}
+              // savedPins={savedPins}
+              // savedPinsById={savedPinsById}
             />
           )}
         />

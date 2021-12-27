@@ -74,7 +74,7 @@ function Header(props) {
         <IconButton>
           <NavLink
             exact
-            to="/collekt"
+            to="/collektions"
             className={classes.userLink}
             activeStyle={{ color: "black" }}
           >
