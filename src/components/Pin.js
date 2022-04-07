@@ -13,12 +13,14 @@ function Pin(props) {
     e.preventDefault();
     const res = await jsonserver.post("/pins", {
       id: pin.id,
+      boardId: Math.floor(Math.random() * 3) + 1,
       alt_description: pin.alt_description,
       url: pin.url,
       link: pin.link,
-      artist_name: pin.artist_name,
-      artist_portfolio: pin.artist_portfolio,
+      // artist_name: pin.artist_name,
+      // artist_portfolio: pin.artist_portfolio,
     });
+    console.log(res);
     updateSavedPins(pin);
   };
 
